@@ -20,9 +20,18 @@ You can now check your localhost to see if it deployed correctly.
 
 3. If working on a **cloud9** account follow instructions below to create a new workspace
     1. Input your project name and description
-    2. Get the git URL of your forked reposistory from BitBucket
+    2. Get the git URL of your forked repository from BitBucket
     3. You should get the SSH URL, it should look something like: git@bitbucket.org:username/repositoryname.git
     4. Now paste the git URL into "Clone from Git URL" field in cloud9
+
+3b. Next, you will need to set up your Linux environment for Python development. You only need to do this once.
+
+```bash
+sudo apt-get install python-virtualenv python-dev python-yaml
+```
+
+3c. Whenever you start a new session, you'll need to "source" the setup.sh file, which gets your Terminal ready for Flask development and testing. You do this by "sourcing" it. After your source the setup script, you can then run your application.
+
 ``` bash
 source setup.sh
 python app.py
