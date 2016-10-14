@@ -12,8 +12,8 @@ databases:
 # For every table in the database, add an item here
 models:
   mainDB:
-    - Programs
-    - Users
+    - Inventory
+    - Bow
     - Courses
 # this makes the navigation bar
 mainMenu:
