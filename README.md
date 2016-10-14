@@ -97,7 +97,7 @@ If I wanted to create a new webpage then I would do the following.
 ```
 * Import the python file you created inside the \_\_init\_\_.py file.
 ```Python
-from app import example.py
+from app import example
 ```
 
 ## Reading and Writing to the database ##
