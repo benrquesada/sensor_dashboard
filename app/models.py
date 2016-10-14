@@ -26,19 +26,22 @@ class tableName (dbModel):
 For more information look at peewee documentation
 """
 
-class Programs (dbModel):
-  pid           = PrimaryKeyField()
-  programName   = TextField()
-  abbreviation  = TextField()
+class Inventory (dbModel):
+  i_id           = PrimaryKeyField()
+  description    = TextField()
+  size           = IntegerField()
+  cost           = IntegerField()
+  size_unit      = TextField()
+  cost_per       = TextField()
+  quantity       = IntegerField()
   
-  
-class Users (dbModel):
-  uid           = PrimaryKeyField()
-  firstName     = TextField()
-  lastName      = TextField()
-  username      = TextField(unique = True)
+class Bow (dbModel):
+  b_id          = PrimaryKeyField()
+  bow_type      = TextField()
+  inventory     = ForeignKeyField(Inventory)    #ForeignKeyField(Related_table)
+  design_name   = TextField()
   age           = IntegerField(null = True)
-  program       = ForeignKeyField(Programs)     # refers to the Programs table by pid
+  program       = ForeignKeyField()     # refers to the Programs table by pid
   
 class Courses (dbModel):
   cid           = PrimaryKeyField()
