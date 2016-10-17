@@ -27,6 +27,7 @@ For more information look at peewee documentation
 """
 
 class Inventory (dbModel):
+  '''Table holding inventory information'''
   i_id           = PrimaryKeyField()
   description    = TextField()
   size           = IntegerField()
@@ -36,17 +37,26 @@ class Inventory (dbModel):
   quantity       = IntegerField()
   
 class Bow (dbModel):
+  '''Table holding the types of bows and the inventory related'''
   b_id          = PrimaryKeyField()
   bow_type      = TextField()
   inventory     = ForeignKeyField(Inventory)    #ForeignKeyField(Related_table)
   design_name   = TextField()
-  age           = IntegerField(null = True)
-  program       = ForeignKeyField()     # refers to the Programs table by pid
   
-class Courses (dbModel):
-  cid           = PrimaryKeyField()
-  courseName    = TextField()
-  coursePrefix  = TextField()
-  courseNumber  = IntegerField(null = True)
-  pid           = ForeignKeyField(Programs)
-  instructor    = ForeignKeyField(Users)
+class Customer (dbModel):
+  '''Table holding customer information'''
+  c_id          = PrimaryKeyField()
+  first_name    = TextField()
+  last_name     = TextField()
+  email         = TextField()
+  phone_number  = IntegerField()
+  address       = TextField()
+
+class Order (dbModel):
+  '''Table holding order information'''
+  status        = CharField()
+  number_of_bows= IntegerField()
+  price         = IntegerField()
+  created_date  = DateField()
+  notes         = TextField()
+  customer      = ForeignKeyField(Customer) # to customer class
