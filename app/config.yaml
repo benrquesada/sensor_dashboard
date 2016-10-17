@@ -14,7 +14,9 @@ models:
   mainDB:
     - Inventory
     - Bow
-    - Courses
+    - Order
+    - Customer
+    
 # this makes the navigation bar
 mainMenu:
   - title: "Home"
