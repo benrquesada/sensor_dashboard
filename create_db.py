@@ -51,38 +51,75 @@ def get_classes (db):
 mainDB.create_tables(get_classes('mainDB'))
 
 # Adding dummy data
-users = Users(  firstName = "Scott",
-                lastName  = "Heggen",
-                username  = "heggens",
-                age       = 33,
-                program   = "1"
-             ).save()
-
-users = Users(  firstName = "Matt",
-                lastName  = "Jadud",
-                username  = "jadudm",
-                age       = 39,
-                program   = "2"
-             ).save()           
+inventory1 = Inventory(  description = "plank of wood",
+                size  = 4,
+                cost  = 14.30,
+                size_unit = "ft",
+                cost_per = "set",
+                quantity = 5
+             )
+inventory1.save()
              
-prog = Programs ( programName = "Computer and Information Science",
-                  abbreviation = "CSC"
-                ).save()
+inventory2 = Inventory(  description = "steel bolt",
+                size  = 17,
+                cost  = 2.67,
+                size_unit = "in",
+                cost_per = "inch",
+                quantity = 23
+             )
+inventory2.save()
+             
+bow1= Bow ( bow_type= "front",
+           inventory= inventory1.i_id,
+           design_name= "Gothic"
+           )
+bow1.save()
+           
+bow2= Bow ( bow_type= "back ",
+           inventory= inventory2.i_id,
+           design_name= "Gothic"
+           )
+           
+bow2.save()
+           
+customer1 =  Customer ( first_name  = "John",
+                       last_name   = "Doe",
+                       email       = "johndoe@example.com",
+                       phone_number = 8738432344,
+                       address     = "123 sample address, Somewhere, 23234"
+                      )
+customer1.save()
 
-prog = Programs ( programName = "Technology and Applied Design",
-                  abbreviation = "TAD"
-                ).save()
+customer2 =  Customer ( first_name  = "Jane",
+                       last_name   = "Doe",
+                       email       = "janedoe@example.com",
+                       phone_number = 8779872344,
+                       address     = "123 sample address, Somewhere, 23234"
+                      )
+customer2.save()
 
-course =  Courses ( courseName = "Software Design and Implementation",
-                    coursePrefix = "CSC",
-                    courseNumber = 226,
-                    pid = 1,
-                    instructor = 1
-                  ).save()
+status1 = Status ( status        = "Confirmed",
+                 )
+status1.save()
 
-course =  Courses ( courseName = "Electricity and Electronics",
-                    coursePrefix = "TAD",
-                    courseNumber = 265,
-                    pid = 2,
-                    instructor = 2
-                  ).save()
+status2 = Status ( status        = "Pending Delivery",
+                 )
+status2.save()
+                  
+order1 = Order ( status        = status1.s_id,
+                  number_of_bows= 12,
+                  price         = 2200,
+                  created_date  = "09/05/1995",
+                  notes         = "Wanted Additional Door Installed",
+                  customer      = customer1.c_id
+                )
+order1.save()
+
+order2 = Order ( status        = status2.s_id,
+                  number_of_bows= 20,
+                  price         = 3100,
+                  created_date  = "02/27/1997",
+                  notes         = "THIS IS A NOTE",
+                  customer      = customer2.c_id
+                )
+order2.save()

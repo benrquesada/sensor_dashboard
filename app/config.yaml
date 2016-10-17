@@ -16,6 +16,7 @@ models:
     - Bow
     - Order
     - Customer
+    - Status
     
 # this makes the navigation bar
 mainMenu:

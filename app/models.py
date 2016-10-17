@@ -52,11 +52,16 @@ class Customer (dbModel):
   phone_number  = IntegerField()
   address       = TextField()
 
+class Status(dbModel):
+  s_id = PrimaryKeyField()
+  status = CharField(unique = True)
+  
 class Order (dbModel):
   '''Table holding order information'''
-  status        = CharField()
+  status        = ForeignKeyField(Status)
   number_of_bows= IntegerField()
   price         = IntegerField()
   created_date  = DateField()
   notes         = TextField()
   customer      = ForeignKeyField(Customer) # to customer class
+
