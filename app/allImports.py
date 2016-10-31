@@ -10,13 +10,8 @@ from flask import request
 from flask import g
 from flask import url_for
 
-import pprint
 from app import models
-from app import logtool
 from models import *                # all the database models
-from app.switch import switch       # implements switch/case statements
-
-
 
 
 ''' Creates an Flask object; @app will be used for all decorators.
@@ -25,10 +20,6 @@ from: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 returns a replacement function. See start.py for an example"
 '''
 app = Flask(__name__)
-#from app import app
-log = logtool.Log()
-# Builds all the database connections on app run
-# Don't panic, if you need clarification ask.
 @app.before_request
 def before_request():
     g.dbMain =  mainDB.connect()

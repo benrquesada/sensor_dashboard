@@ -1,9 +1,6 @@
 # this renders the home page which is start.html
 from allImports import *
-@app.route("/", methods = ["GET"])
-def start():
-  return render_template("start.html",
-                          cfg = cfg) # Do not worry about cfg, but you need
-                                     # to pass that as an argument everytime
-                                     # with render_template
-                          
+@app.route("/<key>/<id>/<tag>/<value>", methods = ["GET"])
+def start(key, id, tag, value):
+  print ("Key: {0} ID: {1} Tag: {2} Value: {3}".format(key, id, tag, value))
+  return "Sucess!!!"                       
