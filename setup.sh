@@ -13,3 +13,4 @@ fi
 sudo pip install Flask
 sudo pip install peewee
 sudo pip install pyyaml
+sudo pip install Flask-Mail
