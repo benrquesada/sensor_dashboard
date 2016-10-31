@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 # this renders the home page which is start.html
 from allImports import *
 from flask_mail import Message
@@ -17,4 +15,3 @@ def not_mail():
 		recipients=["ramosmaciasg@berea.edu"])
   mail.send(msg)
   return "helllo"
->>>>>>> Stashed changes
