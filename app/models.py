@@ -3,7 +3,7 @@ import os
 
 # Create a database
 from app.loadConfig import *
-here = os.path.dirname(__file__)
+here      = os.path.dirname(__file__)
 cfg       = load_config(os.path.join(here, 'config.yaml'))
 mainDB    = SqliteDatabase(cfg['databases']['dev'])
 
@@ -26,42 +26,8 @@ class tableName (dbModel):
 For more information look at peewee documentation
 """
 
-class Inventory (dbModel):
+class Sensor (dbModel):
   '''Table holding inventory information'''
-  i_id           = PrimaryKeyField()
-  description    = TextField()
-  size           = IntegerField()
-  cost           = IntegerField()
-  size_unit      = TextField()
-  cost_per       = TextField()
-  quantity       = IntegerField()
-  
-class Bow (dbModel):
-  '''Table holding the types of bows and the inventory related'''
-  b_id          = PrimaryKeyField()
-  bow_type      = TextField()
-  inventory     = ForeignKeyField(Inventory)    #ForeignKeyField(Related_table)
-  design_name   = TextField()
-  
-class Customer (dbModel):
-  '''Table holding customer information'''
-  c_id          = PrimaryKeyField()
-  first_name    = TextField()
-  last_name     = TextField()
-  email         = TextField()
-  phone_number  = IntegerField()
-  address       = TextField()
-
-class Status(dbModel):
-  s_id = PrimaryKeyField()
-  status = CharField(unique = True)
-  
-class Order (dbModel):
-  '''Table holding order information'''
-  status        = ForeignKeyField(Status)
-  number_of_bows= IntegerField()
-  price         = IntegerField()
-  created_date  = DateField()
-  notes         = TextField()
-  customer      = ForeignKeyField(Customer) # to customer class
-
+  _id            = PrimaryKeyField() #what sensor
+  tag            = IntegerField()
+  value          = IntegerField()

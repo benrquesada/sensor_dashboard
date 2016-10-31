@@ -15,3 +15,7 @@ def not_mail():
 		recipients=["ramosmaciasg@berea.edu"])
   mail.send(msg)
   return "helllo"
+
+def save_to_DB(_id, tag, value):
+    sense = Sensor(_id = _id, tag = tag, value = value)
+    sense.save()
