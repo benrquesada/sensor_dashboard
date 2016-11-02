@@ -5,7 +5,7 @@ from flask_mail import Message
 def start(key, id, tag, value):
   print ("Key: {0} ID: {1} Tag: {2} Value: {3}".format(key, id, tag, value))
   sense = Sensor(_id = id, tag = tag, value = value)
-  sense.save()
+  sense.save(force_insert=True)
   return "Sucess!!!"                       
 
 
