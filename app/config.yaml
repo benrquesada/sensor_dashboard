@@ -1,8 +1,3 @@
-
-# The log file location   
-log:
-filename: "urcpp.log"
-
 # All the databases used by the system
 databases:
   dev: "data/db.sqlite"
@@ -13,14 +8,20 @@ databases:
 models:
   mainDB:
     - Sensor
+    - Reading
     
 # this makes the navigation bar
-mainMenu:
-  - title: "Home"
-    link: "/"
-  - title: "Program Display"
-    link: "readPrograms"
-  - title: "Web Form"
-    link: "createPrograms"
-  - title: "Relational Table"
-    link: "readCourses"
+keys:
+  - 12345678
+  - 87654321
+  
+okay_range:
+  temp:
+    high: 40
+    low: 20
+  humi:
+    high: 100
+    low: 0
+  volt:
+    high: 3.3
+    low:  0.0

@@ -10,7 +10,8 @@ fi
 
 . venv/bin/activate
 
-sudo pip install Flask
-sudo pip install peewee
-sudo pip install pyyaml
-sudo pip install Flask-Mail
+pip install Flask
+pip install peewee
+pip install pyyaml
+pip install Flask-Mail
+pip install twilio

@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['DateTime', "{{tag}}"],
+          {% for reading in readings %}
+          ["{{reading.received}}",  {{reading.value}}],
+          {% endfor %}
+        ]);
+
+        var options = {'title':'Last 24 readings'};
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <a href="/" class="btn btn-warning">
+    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+    </a>
+    <div class="col-xs-12">
+    <div id="curve_chart" class="col-xs-12" style="width = 100%; min-height: 460px"></div>
+    </div>
+  </body>
+</html>

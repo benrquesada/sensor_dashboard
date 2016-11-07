@@ -1,1 +1,4 @@
 *.pyc
+twillio_credentials.py
+config.py
+venv/

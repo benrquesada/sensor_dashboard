@@ -1,47 +1,35 @@
-<div class="row">
-     <div class="col-md-3 col-sm-3 col-xs-6">
-        <div class="dashboard-div-wrapper bk-clr-one">
-            <i  class="fa fa-venus dashboard-div-icon" ></i>
-            <div class="progress progress-striped active">
-<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-</div>
+<!doctype html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        
+        {% include "styling.html" %}
 
-</div>
-             <h5>Simple Text Here </h5>
-        </div>
-    </div>
-     <div class="col-md-3 col-sm-3 col-xs-6">
-        <div class="dashboard-div-wrapper bk-clr-two">
-            <i  class="fa fa-edit dashboard-div-icon" ></i>
-            <div class="progress progress-striped active">
-<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-</div>
+    <body>
+        {% for sensor, tag in sensors.iteritems() %}
+            <div class="col-md-3 col-xs-6">
+                {% for type, values in tag.iteritems() %}
+			<div class="{{sensor}} panel panel-primary" >
+				<div class="panel-heading">
+					<h3 class="panel-title"><a href={{url_for('graph', name=sensor, tag=type )}}>{{sensor}} {{type}}</a></h3>
+					<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+				</div>
+				<div class="panel-body">
+				        <div id="container-{{sensor}}-{{type}}" class="widget"></div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+        {% endfor %}
+        
+    
 
-</div>
-             <h5>Simple Text Here </h5>
-        </div>
-    </div>
-     <div class="col-md-3 col-sm-3 col-xs-6">
-        <div class="dashboard-div-wrapper bk-clr-three">
-            <i  class="fa fa-cogs dashboard-div-icon" ></i>
-            <div class="progress progress-striped active">
-<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-</div>
+        
+    </body>
+    
+    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+    {% include "progressBarjs.html" %}
 
-</div>
-             <h5>Simple Text Here </h5>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-3 col-xs-6">
-        <div class="dashboard-div-wrapper bk-clr-four">
-            <i  class="fa fa-bell-o dashboard-div-icon" ></i>
-            <div class="progress progress-striped active">
-<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-</div>
-
-</div>
-             <h5>Simple Text Here </h5>
-        </div>
-    </div>
-
-</div>
+</html>

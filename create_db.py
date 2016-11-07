@@ -50,3 +50,6 @@ def get_classes (db):
   
 mainDB.create_tables(get_classes('mainDB'))
 
+Sensor(_id=12345678, name="civet").save(force_insert = True)
+Sensor(_id=87654321, name="tahr").save(force_insert = True)
+

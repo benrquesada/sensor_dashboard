@@ -1,5 +1,6 @@
 from peewee import *
 import os
+import datetime
 
 # Create a database
 from app.loadConfig import *
@@ -27,7 +28,18 @@ For more information look at peewee documentation
 """
 
 class Sensor (dbModel):
+  '''Table holding sensor names'''
+  _id            = PrimaryKeyField() #identify sensor
+  name           = CharField() # civet
+
+class Reading (dbModel):
   '''Table holding inventory information'''
   _id            = PrimaryKeyField() #what sensor
-  tag            = IntegerField()
-  value          = IntegerField()
+  sensor         = ForeignKeyField(Sensor, related_name="readings") # we need the sensor the reading belongs to
+  tag            = CharField() #temp, humi, volt, etc...
+  value          = FloatField()
+  received       = DateTimeField(default=datetime.datetime.now())
+  
+  def __repr__(self):
+    return str(self.value)
+
