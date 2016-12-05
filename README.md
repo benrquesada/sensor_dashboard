@@ -7,4 +7,4 @@ Welcome to the PMSSnotification DashBoard
 
 #sending data#
 All sensor data can be sent to
-baseurl.com/reading/&ltkey&gt/&lts_id&gt/&lttag&gt/&ltval&lt
+baseurl.com/reading/&lt;key&gt;/&lt;s_id&gt;/&lt;tag&gt;/&lt;val&lt;
