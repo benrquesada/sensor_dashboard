@@ -50,3 +50,27 @@ def not_mail():
 		recipients=["ramosmaciasg@berea.edu"])
   mail.send(msg)
   return "helllo"
+
+def update_sheets(s_id, tag, value)
+    """
+    Addition of data in google sheets according to and inputed list
+    """
+    store = file.Storage('storage.json')
+    credentials = store.get()
+    if not credentials or credentials.invalid:
+        flow = client.flow_from_clientsecrets(CLIENT_SECRET, SCOPES)
+        credentials = tools.run(flow, store)
+    SERV = discovery.build('sheets','v3',http=creds.authorize(Http()))
+
+
+    # make sure to change the id according to your spreadsheet url
+    spreadsheet_id = '1ebSySz2spX__XRxCiyp-31zc3o8942Xa3rh2Ijz-zsw'
+    # change the top of your data table
+    rangeName = 'Sheet1!A1:A3'
+    # the data list is the data readings that goes into the data table
+    values = [s_id, tag, value]
+    body = {'values': values}
+
+    results.SERV.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=rangeName,
+         valueInputOption=value_input_option, body=body).execute()
+
