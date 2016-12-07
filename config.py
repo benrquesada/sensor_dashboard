@@ -4,7 +4,7 @@ MAIL_PORT = 465
 MAIL_USE_TLS = False
 MAIL_USE_SSL = True
 MAIL_USERNAME = 'notificationspmssthermostat'
-MAIL_PASSWORD = 'pmss2000'
-
+MAIL_PASSWORD = 'pmss2016'
+SECRET_KEY = "somethingsomethinsdasda"
 # administrator list
 ADMINS = ['hunterr@berea.edu']

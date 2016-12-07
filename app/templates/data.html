@@ -11,13 +11,16 @@
         {% for sensor, tag in sensors.iteritems() %}
             <div class="col-md-3 col-xs-6">
                 {% for type, values in tag.iteritems() %}
-			<div class="{{sensor}} panel panel-primary" >
+			<div class="{{sensor}} panel panel-primary _widget {% if loop.index != 2 %}
+				                                                        hidden_widget
+				                                                        {% endif %}" >
 				<div class="panel-heading">
 					<h3 class="panel-title"><a href={{url_for('graph', name=sensor, tag=type )}}>{{sensor}} {{type}}</a></h3>
 					<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
 				</div>
 				<div class="panel-body">
-				        <div id="container-{{sensor}}-{{type}}" class="widget"></div>
+				        <div id="container-{{sensor}}-{{type}}" class="widget 
+				                                                        "></div>
 				</div>
 			</div>
 			{% endfor %}

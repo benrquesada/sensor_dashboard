@@ -1,0 +1,31 @@
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  </head>
+<form method=post>
+    <div class="form-group col-md-6 col-md-offset-3">
+        <label for="name">Name</label>
+        {{managerForm.name(class="form-control")}}
+        <label for="email">Email</label>
+        {{managerForm.email(class="form-control")}}
+        <label for="phone">Phone</label>
+        {{managerForm.phone(class="form-control")}}
+        <label for="mobile_carrier">MobileCarrier</label>
+        {{managerForm.mobile_carrier(class="form-control")}}
+        {{managerForm.csrf_token}}
+        <input type="submit" value="Submit"/>
+    </div>
+    
+   
+    
+</form>
+
+ <table class="table">
+    {% for manager in managers %}
+        <tr>
+            <td>{{manager.name}}</td>
+            <td>{{manager.email}}</td>
+            <td>{{manager.phone}}</td>
+            <td>{{manager.mobile_carrier}}</td>
+        </tr>
+    {% endfor %}
+</table>

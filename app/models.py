@@ -42,4 +42,32 @@ class Reading (dbModel):
   
   def __repr__(self):
     return str(self.value)
+    
+# this is a class because if it were yaml the server would have to be
+# restarted in order for the changes to take place.
+class Carrier( dbModel):
+  """ table holding the people that will receive notification """
+  name = CharField()
+  email_string = CharField()
+  
+  def __repr__(self):
+    return "{}".format(self.name)
 
+# this is a class because if it were yaml the server would have to be
+# restarted in order for the changes to take place.
+class Manager( dbModel):
+  """ table holding the people that will receive notification """
+  name           = CharField()
+  email          = CharField()
+  phone          = CharField()
+  mobile_carrier = ForeignKeyField(Carrier)
+  
+# this is a class because if it were yaml the server would have to be
+# restarted in order for the changes to take place.
+class AcceptableRange( dbModel ):
+  """ holds the acceptable ranges that a sensor can have """
+  _id          = PrimaryKeyField()
+  sensor       = ForeignKeyField(Sensor) # so that sensor have own range
+  tag          = CharField()
+  high         = FloatField()
+  low          = FloatField()

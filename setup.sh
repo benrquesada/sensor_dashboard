@@ -15,3 +15,4 @@ pip install peewee
 pip install pyyaml
 pip install Flask-Mail
 pip install twilio
+pip install flask_wtf
