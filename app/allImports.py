@@ -16,6 +16,13 @@ from flask_mail import Mail
 from app import models
 from models import *                # all the database models
 
+# stuff for updating google sheets
+from httplib2 import Http
+from apiclient import discovery
+from oauth2client import client
+from oauth2client import tools
+from oauth2client import file
+
 
 ''' Creates an Flask object; @app will be used for all decorators.
 from: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
