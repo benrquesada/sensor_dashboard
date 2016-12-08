@@ -14,7 +14,7 @@ def save(key, s_id, tag, value):
   """
   if not int(key) in cfg['keys']: # don't continue if wrong key is given
     abort(403)
-    
+  update_sheets(s_id, tag, value)
   sense = Reading(sensor = s_id ,tag = tag, value = value)
   sense.save()
   return "Sucess!!!"                       
@@ -54,23 +54,26 @@ def not_mail():
 def update_sheets(s_id, tag, value)
     """
     Addition of data in google sheets according to and inputed list
+   
+    auth acess code from http://wescpy.blogspot.com/2014/11/authorized-google-api-access-from-python.html
+    editing sheets code from https://developers.google.com/sheets/guides/values#writing
     """
     store = file.Storage('storage.json')
     credentials = store.get()
     if not credentials or credentials.invalid:
-        flow = client.flow_from_clientsecrets(CLIENT_SECRET, SCOPES)
-        credentials = tools.run(flow, store)
-    SERV = discovery.build('sheets','v3',http=creds.authorize(Http()))
+        flow = client.flow_from_clientsecrets('client_secret.json', SCOPES)
+        credentials = tools.run_flow(flow, store)
+    SERV = discovery.build('sheets','v4',http=credentials.authorize(Http()))
 
 
     # make sure to change the id according to your spreadsheet url
     spreadsheet_id = '1ebSySz2spX__XRxCiyp-31zc3o8942Xa3rh2Ijz-zsw'
     # change the top of your data table
-    rangeName = 'Sheet1!A1:A3'
+    rangeName = 'Sheet1!A1:C1'
     # the data list is the data readings that goes into the data table
-    values = [s_id, tag, value]
+    values = [[s_id,tag,value]]
     body = {'values': values}
+	
+    result = SERV.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=rangeName,valueInputOption='USER_ENTERED',body=body).execute()
 
-    results.SERV.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=rangeName,
-         valueInputOption=value_input_option, body=body).execute()
 
