@@ -53,3 +53,7 @@ mainDB.create_tables(get_classes('mainDB'))
 Sensor(_id=12345678, name="civet").save(force_insert = True)
 Sensor(_id=87654321, name="tahr").save(force_insert = True)
 
+Carrier(name = "att", email_string="txt.att.net").save()
+Carrier(name = "tmobile", email_string="tmomail.net").save()
+Carrier(name = "straight talk", email_string="vtext.com").save()
+

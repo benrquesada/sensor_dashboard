@@ -9,6 +9,9 @@ models:
   mainDB:
     - Sensor
     - Reading
+    - Carrier
+    - Manager
+    - AcceptableRange
     
 # this makes the navigation bar
 keys:
